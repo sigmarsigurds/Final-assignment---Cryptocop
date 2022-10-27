@@ -1,0 +1,1 @@
+þarf að breyta hvernig ég generate-a jwt tokens, nota gemerate jwt-token í stað þess að fara beint í databaseið, generatejwt token kallar þá á databaseið ásamt hinu sem það gerir en veit samt ekkki hvort það returni réttum hlut

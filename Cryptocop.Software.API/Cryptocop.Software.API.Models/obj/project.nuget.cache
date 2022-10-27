@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "nMTDHn6BYEzB6cXfoQRm+wn11UQ4kJ/MqLwyI1WUn4zJkVZewJN82PdNv/y6eaZyHX7cCUdhZVD4hDj3ubEdKA==",
+  "success": true,
+  "projectFilePath": "/Users/sigmarsigurdson/verkefni/Vefþjónustur/Final assignment - Cryptocop/Cryptocop.Software.API/Cryptocop.Software.API.Models/Cryptocop.Software.API.Models.csproj",
+  "expectedPackageFiles": [
+    "/Users/sigmarsigurdson/.nuget/packages/newtonsoft.json/13.0.1/newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}
