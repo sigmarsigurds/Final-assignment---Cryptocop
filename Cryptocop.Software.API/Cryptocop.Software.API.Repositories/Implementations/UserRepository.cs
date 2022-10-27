@@ -48,15 +48,16 @@ namespace Cryptocop.Software.API.Repositories.Implementations
                 return null;
             }
 
-            // var token = new JwtToken();
-            // _dbContext.JwtTokens.Add(token);
-            // _dbContext.SaveChanges();
+            var token = new JwtToken();
+            _dbContext.JwtTokens.Add(token);
+            _dbContext.SaveChanges();
 
             return new UserDto
             {
                 Id = user.Id,
                 Email = user.Email,
                 FullName = user.FullName,
+                TokenId = token.Id
             };
         }
     }

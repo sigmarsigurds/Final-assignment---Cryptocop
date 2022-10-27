@@ -16,26 +16,23 @@ namespace Cryptocop.Software.API.Services.Implementations
         private readonly string _expDate;
         private readonly string _issuer;
         private readonly string _audience;
-        private readonly ITokenRepository _tokenRepository;
-        public TokenService(string secret, string expDate, string issuer, string audience, ITokenRepository tokenRepository)
+
+        public TokenService(string secret, string expDate, string issuer, string audience)
         {
             _secret = secret;
             _expDate = expDate;
             _issuer = issuer;
             _audience = audience;
-            _tokenRepository = tokenRepository;
             // hvernig set ég tokenrepository herna innÐ?? ?
 
         }
-        public JwtToken GenerateJwtToken(UserDto user)
+        public string GenerateJwtToken(UserDto user)
         {
 
             var tokenHandler = new JwtSecurityTokenHandler();
             var tokenDescriptor = GetSecurityTokenDescriptor(user);
             var token = tokenHandler.CreateToken(tokenDescriptor);
-            tokenHandler.WriteToken(token);
-
-            return _tokenRepository.CreateNewToken();
+            return tokenHandler.WriteToken(token);
 
         }
         private SecurityTokenDescriptor GetSecurityTokenDescriptor(UserDto user)

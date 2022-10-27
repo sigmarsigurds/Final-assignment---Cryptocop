@@ -27,10 +27,8 @@ namespace Cryptocop.Software.API.Services.Implementations
 
         public UserDto AuthenticateUser(LoginInputModel loginInputModel)
         {
-
             var user = _userRepository.AuthenticateUser(loginInputModel);
             var token = _tokenService.GenerateJwtToken(user);
-            user.TokenId = token.Id;
 
             return user;
         }

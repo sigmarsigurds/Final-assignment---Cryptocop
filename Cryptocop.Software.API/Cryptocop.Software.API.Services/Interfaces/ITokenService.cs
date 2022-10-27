@@ -5,6 +5,6 @@ namespace Cryptocop.Software.API.Services.Interfaces
 {
     public interface ITokenService
     {
-        JwtToken GenerateJwtToken(UserDto user);
+        string GenerateJwtToken(UserDto user);
     }
 }
