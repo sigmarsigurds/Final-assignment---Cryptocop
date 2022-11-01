@@ -14,7 +14,12 @@ namespace Cryptocop.Software.API.Profiles
         public OrderProfile()
         {
             CreateMap<Order, OrderDto>();
+            CreateMap<OrderItem, OrderItemDto>();
+            //.ForMember(o => o.OrderItems, d => d.MapFrom(s => s.Items));
             CreateMap<OrderInputModel, Order>();
+            CreateMap<ShoppingCartItemDto, OrderItemDto>();
+            CreateMap<ShoppingCartItemDto, OrderItem>();
+            CreateMap<OrderItem, ShoppingCartItemDto>();
         }
 
     }

@@ -8,5 +8,7 @@ namespace Cryptocop.Software.API.Models.Dtos
         public float UnitPrice { get; set; }
         public float TotalPrice { get; set; }
 
+
+
     }
 }

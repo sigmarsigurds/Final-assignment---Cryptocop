@@ -43,7 +43,7 @@ namespace Cryptocop.Software.API.Middleware
                         if (tokenService.IsTokenBlacklisted(tokenId))
                         {
                             context.Response.StatusCode = 401;
-                            await context.Response.WriteAsync("JWT token provided is invalid.");
+                            await context.Response.WriteAsync($"JWT token provided is invalid. id {tokenId}");
                         }
                     }
                 };

@@ -32,7 +32,7 @@ namespace Cryptocop.Software.API.Controllers
         public IActionResult signIn([FromBody] LoginInputModel inputModel)
         {
             var user = _accountService.AuthenticateUser(inputModel);
-            if (user == null) { return Ok("user not found"); }
+            if (user == null) { return Unauthorized("user not found"); }
             return Ok(_tokenService.GenerateJwtToken(user));
         }
 
@@ -44,7 +44,7 @@ namespace Cryptocop.Software.API.Controllers
         {
             int.TryParse(User.Claims.FirstOrDefault(c => c.Type == "tokenId").Value, out var tokenId);
             _accountService.Logout(tokenId);
-            return Ok();
+            return Ok(tokenId);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Cryptocop.Software.API.Models.InputModels;
+using Cryptocop.Software.API.Services.Interfaces;
 
 namespace Cryptocop.Software.API.Controllers
 {
@@ -7,21 +8,24 @@ namespace Cryptocop.Software.API.Controllers
     [ApiController]
     public class ExchangeController : ControllerBase
     {
-        public ExchangeController()
-        {
+        IExchangeService _exchangeService;
 
+        public ExchangeController(IExchangeService exchangeService)
+        {
+            _exchangeService = exchangeService;
         }
 
         [HttpGet]
-        [Route("")]
-        /* Gets all exchanges in a paginated envelope. This routes
+        [Route("{pageNumber:int}")]
+        /* Gets all exchanges in a paginated envelope. This route
         accepts a single query parameter called pageNumber which is used to paginate the
         results */
 
-        //TODO: ADD QUERY PARAMETRES
-        public IActionResult getExchanges()
+        public async Task<IActionResult> getExchanges(int pageNumber)
         {
-            throw new NotImplementedException();
+            var envelope = await _exchangeService.GetExchanges(pageNumber);
+
+            return Ok(envelope.Items);
         }
     }
 }

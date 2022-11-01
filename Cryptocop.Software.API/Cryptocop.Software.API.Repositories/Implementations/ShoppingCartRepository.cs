@@ -42,7 +42,7 @@ namespace Cryptocop.Software.API.Repositories.Implementations
             .FirstOrDefault(u => u.Email == email);
 
 
-            if (user == null) { throw new InvalidOperationException("no user found"); }
+            if (user == null) { throw new InvalidOperationException($"no user found with email {email}"); }
 
             if (user.ShoppingCart == null) { throw new InvalidOperationException("no shoppingCart exists for this user"); }
 

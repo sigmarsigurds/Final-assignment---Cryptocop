@@ -27,8 +27,7 @@ namespace Cryptocop.Software.API.Controllers
         /* Adds a new order associated with the authenticated user, see Models section for reference */
         public IActionResult addOrder([FromBody] OrderInputModel inputModel)
         {
-            _orderService.CreateNewOrder(User.Identity.Name, inputModel);
-            return NoContent();
+            return Ok(_orderService.CreateNewOrder(User.Identity.Name, inputModel));
         }
     }
 }

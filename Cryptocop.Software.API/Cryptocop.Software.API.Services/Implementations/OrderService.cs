@@ -9,19 +9,26 @@ namespace Cryptocop.Software.API.Services.Implementations
     public class OrderService : IOrderService
     {
         IOrderRepository _orderRepository;
+        IShoppingCartService _shoppingCartService;
 
-        public OrderService(IOrderRepository orderRepository)
+        public OrderService(IOrderRepository orderRepository, IShoppingCartService shoppingCartService)
         {
             _orderRepository = orderRepository;
+            _shoppingCartService = shoppingCartService;
+
         }
         public IEnumerable<OrderDto> GetOrders(string email)
         {
             return _orderRepository.GetOrders(email);
         }
 
-        public void CreateNewOrder(string email, OrderInputModel order)
+        public OrderDto CreateNewOrder(string email, OrderInputModel order)
         {
-            _orderRepository.CreateNewOrder(email, order);
+            var cartItems = _shoppingCartService.GetCartItems(email);
+            _shoppingCartService.ClearCart(email);
+
+            return _orderRepository.CreateNewOrder(email, order, cartItems);
+
         }
     }
 }

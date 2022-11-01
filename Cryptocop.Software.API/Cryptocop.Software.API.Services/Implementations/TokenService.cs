@@ -28,12 +28,10 @@ namespace Cryptocop.Software.API.Services.Implementations
         }
         public string GenerateJwtToken(UserDto user)
         {
-
             var tokenHandler = new JwtSecurityTokenHandler();
             var tokenDescriptor = GetSecurityTokenDescriptor(user);
             var token = tokenHandler.CreateToken(tokenDescriptor);
             return tokenHandler.WriteToken(token);
-
         }
         private SecurityTokenDescriptor GetSecurityTokenDescriptor(UserDto user)
         {

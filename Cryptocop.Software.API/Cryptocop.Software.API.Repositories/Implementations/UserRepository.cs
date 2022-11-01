@@ -2,6 +2,7 @@
 using System.Linq;
 using Cryptocop.Software.API.Models.Dtos;
 using Cryptocop.Software.API.Models.InputModels;
+using Cryptocop.Software.API.Models.Exceptions;
 using Cryptocop.Software.API.Repositories.Interfaces;
 using Cryptocop.Software.API.Repositories.Contexts;
 using Microsoft.EntityFrameworkCore;
@@ -45,19 +46,20 @@ namespace Cryptocop.Software.API.Repositories.Implementations
                 u.HashedPassword == passwordHash);
             if (user == null)
             {
-                return null;
+                throw new ResourceNotFoundException();
             }
 
-            var token = new JwtToken();
-            _dbContext.JwtTokens.Add(token);
-            _dbContext.SaveChanges();
+            // var token = new JwtToken();
+            // token.Blacklisted = false;
+            // _dbContext.JwtTokens.Add(token);
+            // _dbContext.SaveChanges();
 
             return new UserDto
             {
                 Id = user.Id,
                 Email = user.Email,
                 FullName = user.FullName,
-                TokenId = token.Id
+                //TokenId = token.Id,
             };
         }
     }
